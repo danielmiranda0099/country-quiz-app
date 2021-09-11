@@ -1,0 +1,23 @@
+
+
+body{
+    width: 100%;
+    min-height: 100vh;
+}
+
+.container-card-quiz{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 100vh;
+}
+
+.card-quiz{
+    width: 38%;
+    height: 55vh;
+
+    border: 2px solid gray;
+    border-radius: 12px;
+}
