@@ -3,6 +3,8 @@
 body{
     width: 100%;
     min-height: 100vh;
+
+    background: #0086BF;
 }
 
 .container-card-quiz{
@@ -15,9 +17,10 @@ body{
 }
 
 .card-quiz{
-    width: 38%;
-    height: 55vh;
+    width: 400px;
+    height: 450px;
 
-    border: 2px solid gray;
     border-radius: 12px;
+
+    background: white;
 }
