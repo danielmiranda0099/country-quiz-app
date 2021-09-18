@@ -17,10 +17,22 @@ body{
 }
 
 .card-quiz{
-    width: 400px;
-    height: 450px;
+    width: 380px;
+    height: 330px;
 
     border-radius: 12px;
 
     background: white;
+}
+
+.buttons-answers{
+    cursor: pointer;
+}
+
+.answers-correct{
+    background: #66C47B;
+}
+
+.answers-wrong{
+    background: #dc3545;
 }
