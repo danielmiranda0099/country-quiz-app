@@ -1,3 +1,5 @@
+import { getRandomContries } from "../../helpers/getRandomContries";
+import { cardRandomCountriesAction } from "./cardCountriesActions";
 
 // TYPES
 export const FETCH_COUNTRIES_REQUEST = 'FETCH_COUNTRIES_REQUEST';
@@ -32,6 +34,14 @@ export const getCountries = () => {
         fetch( 'https://restcountries.eu/rest/v2/all' )
             .then( response => response.json() )
             .then( json => dispatch( fetchCountriesSuccess( json ) ) )
+            .then( json => {
+                console.log(json.payload)
+                return getRandomContries(json.payload) 
+            })
+            .then( countries => {
+                console.log(countries);
+                dispatch( cardRandomCountriesAction(countries) )
+            })
             .catch( error => dispatch( fetchCountriesError('hubo un error :C') ) )
     }
 }

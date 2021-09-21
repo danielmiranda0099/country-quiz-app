@@ -1,80 +1,47 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { getRandomContries } from '../../helpers/getRandomContries';
+import { cardAnswerAction, cardIsAnswerCorrectAction, cardIsAnswerSelectAction, cardRandomCountriesAction } from '../../redux/actions/cardCountriesActions';
 import { getCountries } from '../../redux/actions/getCountriesAction';
 
 import { ButtonsAnswers } from './ButtonsAnswers';
 
 export const CardQuiz = () => {
-    const [countries, setCountries] = useState([]);
-    const [answer, setAnswer] = useState(null);
-    const [isAnweredCorrect, setIsAnweredCorrect ] = useState(false);
-    const [isFailed, setIsFailed] = useState(null);
-    const [classCorrect, setClassCorrect] = useState(null);
-    const [isNext, setIsNext] = useState(false);
-    
-    const dispatch = useDispatch( );
+    const dispatch = useDispatch();
+
+    const countriesAll = useSelector( state => state.getCountriesReducers.countries);
+    const cardCountries = useSelector( state => state.cardCountriesReducers.countries)
+    const { answer, isAnswerCorrect } = useSelector( state => state.cardCountriesReducers );
 
     useEffect( () => {
-        const randomNum = () =>  parseInt( (Math.random() * (250 - 1 + 1)) + 1 );
-        
-        const getContries = (json) => {
-            const countries = [];
-
-            while(countries.length < 4){
-            let randomCountry = randomNum();
-            if( countries?.filter( el => el?.name === json[randomCountry]?.name).length <= 0 && json[randomCountry].name.length > 1 && json[randomCountry].capital.length > 1  ){
-                countries.push(json[randomCountry]);
-            }
-            }
-            setCountries(countries);
-        }
-        
-        const getData = async() => {
-            const url = 'https://restcountries.eu/rest/v2/all';
-            const data = await fetch(url);
-            const json = await data.json();
-
-            getContries(json);
-        }
-
-
-        setAnswer( parseInt( (Math.random() * (3 - 1 + 1)) + 1 ) - 1 );
-        getData();
-
-        dispatch( getCountries()  );
-        
+        dispatch( getCountries() ); 
+        const answer = parseInt( (Math.random() * (3 - 1 + 1)) + 1 );
+        dispatch( cardAnswerAction( answer ) )
     }, []);
 
-
-    const handleClickAnswer = (e) => {
-        
-        if(parseInt(e.target.getAttribute('data-index')) !== answer && isFailed === null){
-            e.target.classList.add('answers-wrong');
-            setTimeout( () => setIsFailed(true), 3000);
-            return;
-        }
-        setClassCorrect( answer );
-        setIsFailed(false);
-        setIsAnweredCorrect(true);
+    const handleClickNext = () => {
+        const countries = getRandomContries( countriesAll );
+        dispatch( cardRandomCountriesAction(countries) ); 
+        const answer = parseInt( (Math.random() * (3 - 1 + 1)) + 1 );
+        dispatch( cardAnswerAction( answer ) );
+    
+        dispatch( cardIsAnswerCorrectAction(null) );
+        dispatch( cardIsAnswerSelectAction(false) );
     }
 
     return(
-        <div className="card-quiz animate__animated animate__fast animate__backInDown">
+        <>
+        { 
+            <div className="card-quiz animate__animated animate__fast animate__backInDown">
+                <h2 className="title-quiz">la capital de { cardCountries.length > 1 && cardCountries[answer].name } es</h2>
 
-            {
-                !isFailed ? <>
-                            <h2 className="title-quiz">la capital de {countries[answer]?.name} es</h2>
+                <ButtonsAnswers />
 
-                            <ButtonsAnswers countries={countries} handleClickAnswer={handleClickAnswer} classCorrect={ setClassCorrect } />
-
-                            {
-                                isAnweredCorrect && <h2 >NEXT</h2>
-                            }
-                          </>
-                    : <h2>te eqivicaste jeje</h2>
-            }
-
-            
-        </div>
+                {
+                    isAnswerCorrect && <h2 onClick={ handleClickNext }> NEXT </h2>
+                }
+            </div>                               
+        }
+        </>
     )
 }
