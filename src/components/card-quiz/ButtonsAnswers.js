@@ -1,23 +1,28 @@
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
-import { cardIsAnswerCorrectAction, cardIsAnswerSelectAction, cardScore } from '../../redux/actions/cardCountriesActions';
+import { useDispatch, useSelector } from 'react-redux';
+import { Redirect, useHistory  } from 'react-router';
+
+import { cardIsAnswerCorrectAction, cardIsAnswerSelectAction, cardResIncorrect, cardScore } from '../../redux/actions/cardCountriesActions';
 
 export const ButtonsAnswers = ( ) => {
   const dispatch = useDispatch();
+  let history = useHistory();
 
-  const letras = ['A', 'B', 'C', 'D'];
+  const letters = ['A', 'B', 'C', 'D'];
 
-  const { countries, answer, isAnswerSelect} = useSelector( state => state.cardCountriesReducers);
+  const { cardCountries, answer, isAnswerSelect, resIncorrect} = useSelector( state => state.cardCountriesReducers);
   
-
   const handleClickAnswer = (e) => {
     if(!isAnswerSelect){
       if(e.target.dataset.index === String(answer)){
         dispatch( cardIsAnswerCorrectAction(true) );
         dispatch( cardScore() )
       }else{
-        e.target.classList.add('answers-wrong');
+        dispatch( cardResIncorrect( e.target.dataset.capital ) );
         dispatch( cardIsAnswerCorrectAction(false) );
+
+        setTimeout(() => {
+          history.push('/country-quiz-score');
+        }, 2000);
       }
       dispatch( cardIsAnswerSelectAction(true) );
     }
@@ -26,13 +31,29 @@ export const ButtonsAnswers = ( ) => {
   return(
     <>
       {
-        countries.length > 0 
-                              ? countries.map( (el, index) => <h2 className={`buttons-answers ${ isAnswerSelect &&  index === answer ? 'answers-correct' : null} `}
-                                                              onClick={ handleClickAnswer }
-                                                              data-index={index} 
-                                                              key={el.capital}> {el.capital}</h2> ) 
-                              : <h2>cargando...</h2>
+        cardCountries?.length > 0 && cardCountries.map( (el, index) => 
+                    <div className={`buttons-answers ${!isAnswerSelect && 'is-hover'} ${ isAnswerSelect &&  index === answer ? 'answers-correct' : null}  ${resIncorrect === el.capital && 'answers-wrong'}`}
+                    data-index={index}
+                    data-capital={el.capital} 
+                    key={el.capital}  
+                    onClick={ handleClickAnswer }> 
+                            
+                            <h2 className={'answers-letters'}
+                            data-index={index}
+                            data-capital={el.capital}>
+                                {letters[index]}
+                            </h2> 
+
+                            <h2 data-index={index}
+                            data-capital={el.capital}> {el.capital} </h2>  
+
+                            <div className='animation-response' ></div>
+                    </div>) 
       }
     </>
   )
 }
+
+
+
+

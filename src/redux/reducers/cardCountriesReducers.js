@@ -1,8 +1,15 @@
-import { CARD_ANSWER, CARD_IS_ANSWER_SELECT, CARD_RANDOM_COUNTRIES, CARD_IS_ANSWER_CORRECT, CARD_SCORE } from "../actions/cardCountriesActions";
+import { CARD_ANSWER, 
+        CARD_IS_ANSWER_SELECT, 
+        CARD_RANDOM_COUNTRIES, 
+        CARD_IS_ANSWER_CORRECT, 
+        CARD_SCORE, 
+        CARD_SCORE_RESET,
+        CARD_RES_INCORRECT} from "../actions/cardCountriesActions";
 
 const initialState = {
-    countries: [],
+    cardCountries: [],
     answer: null,
+    resIncorrect: false,
     isAnswerCorrect: null,
     isAnswerSelect: false,
     score: 0
@@ -14,7 +21,7 @@ export const cardCountriesReducers = ( state=initialState, action ) => {
         case CARD_RANDOM_COUNTRIES:
             return {
                 ...state,
-                countries: action.payload
+                cardCountries: action.payload
             }
         
         case CARD_ANSWER:
@@ -22,6 +29,11 @@ export const cardCountriesReducers = ( state=initialState, action ) => {
                 ...state,
                 answer: action.payload
             }
+        case CARD_RES_INCORRECT:
+               return {
+                   ...state,
+                   resIncorrect: action.payload
+               } 
         case CARD_IS_ANSWER_SELECT:
             return {
                 ...state,
@@ -36,6 +48,11 @@ export const cardCountriesReducers = ( state=initialState, action ) => {
             return {
                 ...state,
                 score: state.score + 1
+            }
+        case CARD_SCORE_RESET:
+            return {
+                ...state,
+                score: 0
             }
         default:
             return state;

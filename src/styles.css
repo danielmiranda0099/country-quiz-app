@@ -1,13 +1,65 @@
-
-
 body{
     width: 100%;
-    min-height: 100vh;
+    max-height: 100%;
 
-    background: #0086BF;
+    font-size: 16px;
+    font-family: Poppins;
+
+    background-size: cover;
+    background-repeat:no-repeat;
+    background-position: center center;
+
+    background: #00d2ff;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #3a7bd5, #00d2ff);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #3a7bd5, #00d2ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    
+    
 }
 
-.container-card-quiz{
+.header{
+    display: flex;
+    justify-content: center;
+
+    font-size: 35px;
+    color: white;
+    padding: 20px;
+}
+
+.home-button{
+    width: 40%;
+    font-size: 30px;
+    text-decoration: none;
+    color: white;
+}
+
+.earth {
+    width: 300px;
+    min-height: 300px;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.7);
+
+    margin-top: 100px;
+}
+  
+  
+  
+.earth div{
+    width: 200%;
+    height: 100%;
+    animation: spin 40s linear alternate infinite;
+    /*background-image: url(https://cdn.pixabay.com/photo/2017/10/08/20/20/map-2831458_960_720.png);
+    orginal image at https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Earthmap1000x500compac.jpg/640px-Earthmap1000x500compac.jpg */
+    background-size: cover;
+}
+@keyframes spin {
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+.container-card{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,23 +68,184 @@ body{
     height: 100vh;
 }
 
-.card-quiz{
+.card{
     width: 380px;
-    height: 330px;
+    min-height: 300px;
+
+    padding: 40px 15px;
 
     border-radius: 12px;
 
-    background: white;
+    background: white; 
 }
 
-.buttons-answers{
+.title-quiz {
+    font-size: 24px;
+    color: #2F527B;
+
+    margin: 0;
+    margin-bottom: 25px;
+}
+
+.button-next{
+    display: inline-block;
+
+    color: white;
+    background: #F9A826;
+
+    margin: 0px;
+    padding: 12px;
+
+    box-shadow: 0px 2px 4px rgba(252, 168, 47, 0.4);
+    border-radius: 12px;
+
     cursor: pointer;
 }
 
+.img-quiz{
+    position:absolute;
+
+    top: -90px;
+    right: 0;
+}
+
+.buttons-answers{
+    display: flex;
+    position: relative;
+
+    font-weight:  lighter;
+    color: #6066D0;
+    background-color: white;
+
+    padding: 7px;
+
+    border: 2px solid rgba(96, 102, 208, 0.7);
+    border-radius: 12px;
+
+    margin: 9px 0px;
+    
+    cursor: pointer;
+
+    transition: background-color 0.3s;
+}
+
+.buttons-answers.is-hover:hover{
+    background-color: #F9A826;
+    color: white;
+    border: 2px solid #F9A826;
+}
+
+.buttons-answers h2 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
 .answers-correct{
-    background: #66C47B;
+    background: #60BF88;
+    color: white;
+    border: 2px solid #60BF88;
 }
 
 .answers-wrong{
-    background: #dc3545;
+    background: #EA8282;
+    color: white;
+    border: 2px solid #EA8282;
+}
+
+.answers-letters{
+    margin-right: 20px;
+}
+
+.card-score{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    color: #1D355D;
+}
+
+.score-main{
+    color: #60BF88;
+    font-size: 35px;
+}
+
+.score-description h2{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.button{
+    padding: 7px;
+    border: 2px solid rgba(96, 102, 208, 0.7);
+    border-radius: 12px;
+
+    text-align: center;
+
+    cursor: pointer;
+
+    transition: background-color .4s;
+}
+
+.score-button{
+    width: 80%;
+}
+
+.button:hover{
+    color:white;
+    background-color: #6066d0;
+}
+
+.flex-row{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-column{
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+
+    background: white;
+    color: #2F527B;
+}
+
+.icon{
+    color: #2F527B;
+    margin: 0 10px;
+    font-size: 20spx;
+}
+
+.enlace{
+    text-decoration: none;
+    color: #2F527B;
+}
+
+.animation-response{
+    position: absolute;
+    width: 0;
+    height: 100%;
+
+    top: 0;
+    left: 0;
+
+    background: blueviolet;
+    border-radius: 12px;
+
+    transition: width .7s;
+}
+
+.animation-response.is-animate{
+    width: 100%;
 }
