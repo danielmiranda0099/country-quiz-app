@@ -1,20 +1,20 @@
 {
   "files": {
     "main.css": "/country-quiz-app/static/css/main.fab9034e.chunk.css",
-    "main.js": "/country-quiz-app/static/js/main.2946e2b3.chunk.js",
-    "main.js.map": "/country-quiz-app/static/js/main.2946e2b3.chunk.js.map",
+    "main.js": "/country-quiz-app/static/js/main.5bad09e2.chunk.js",
+    "main.js.map": "/country-quiz-app/static/js/main.5bad09e2.chunk.js.map",
     "runtime-main.js": "/country-quiz-app/static/js/runtime-main.6218db01.js",
     "runtime-main.js.map": "/country-quiz-app/static/js/runtime-main.6218db01.js.map",
-    "static/js/2.0a6ac24e.chunk.js": "/country-quiz-app/static/js/2.0a6ac24e.chunk.js",
-    "static/js/2.0a6ac24e.chunk.js.map": "/country-quiz-app/static/js/2.0a6ac24e.chunk.js.map",
+    "static/js/2.1060208f.chunk.js": "/country-quiz-app/static/js/2.1060208f.chunk.js",
+    "static/js/2.1060208f.chunk.js.map": "/country-quiz-app/static/js/2.1060208f.chunk.js.map",
     "index.html": "/country-quiz-app/index.html",
     "static/css/main.fab9034e.chunk.css.map": "/country-quiz-app/static/css/main.fab9034e.chunk.css.map",
-    "static/js/2.0a6ac24e.chunk.js.LICENSE.txt": "/country-quiz-app/static/js/2.0a6ac24e.chunk.js.LICENSE.txt"
+    "static/js/2.1060208f.chunk.js.LICENSE.txt": "/country-quiz-app/static/js/2.1060208f.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.6218db01.js",
-    "static/js/2.0a6ac24e.chunk.js",
+    "static/js/2.1060208f.chunk.js",
     "static/css/main.fab9034e.chunk.css",
-    "static/js/main.2946e2b3.chunk.js"
+    "static/js/main.5bad09e2.chunk.js"
   ]
 }
