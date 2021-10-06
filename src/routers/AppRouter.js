@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, HashRouter } from 'react-router-dom';
 
 import { Page404 } from '../pages/404';
 import { CountryQuizPage } from '../pages/CountryQuizPage';
@@ -11,7 +11,7 @@ import { AuthRouter } from './AuthRouter';
 export const AppRouter = () => {
 
     return (
-        <Router>
+        <HashRouter>
             <div>
                 <Switch>
                     <Route 
@@ -42,6 +42,6 @@ export const AppRouter = () => {
                     />
                 </Switch>
             </div>
-        </Router>
+        </HashRouter>
     )
 }
