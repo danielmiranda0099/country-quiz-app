@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { cardIsAnswerCorrectAction, cardIsAnswerSelectAction, cardScoreReset } from "../../redux/actions/cardCountriesActions";
 
 export const CardQuizScore = () => {
@@ -20,7 +20,7 @@ export const CardQuizScore = () => {
     return (
         <div className="container-card">
             <div className="card card-score animate__animated animate__fast animate__backInDown">
-                <img src={ `${process.env.PUBLIC_URL}/img/undraw_winners_ao2o 2.svg` } />
+                <img src={ `${process.env.PUBLIC_URL}/img/undraw_winners_ao2o 2.svg` } alt='imagen'/>
                 <h2 style={{ fontSize:'35px', color: '#1D355D' }}>Resultado</h2>
                 <div className='flex-row score-description'> <h2>Obtuviste</h2> <h2 className='score-main'> { score } </h2>  <h2>respuestas correctas</h2></div>
             

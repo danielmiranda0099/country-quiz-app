@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect, useHistory  } from 'react-router';
+import { useHistory  } from 'react-router';
 
 import { cardIsAnswerCorrectAction, cardIsAnswerSelectAction, cardResIncorrect, cardScore } from '../../redux/actions/cardCountriesActions';
 
@@ -32,7 +32,7 @@ export const ButtonsAnswers = ( ) => {
     <>
       {
         cardCountries?.length > 0 && cardCountries.map( (el, index) => 
-                    <div className={`buttons-answers ${!isAnswerSelect && 'is-hover'} ${ isAnswerSelect &&  index === answer ? 'answers-correct' : null}  ${resIncorrect === el.capital && 'answers-wrong'}`}
+                    <div className={`buttons-answers ${!isAnswerSelect && 'is-hover'} `}
                     data-index={index}
                     data-capital={el.capital} 
                     key={el.capital}  
@@ -47,7 +47,7 @@ export const ButtonsAnswers = ( ) => {
                             <h2 data-index={index}
                             data-capital={el.capital}> {el.capital} </h2>  
 
-                            <div className='animation-response' ></div>
+                            <div className={`animation-response  ${ isAnswerSelect &&  index === answer ? 'is-animate answers-correct' : null} ${resIncorrect === el.capital && 'is-animate answers-wrong'}`} ></div>
                     </div>) 
       }
     </>

@@ -115,7 +115,7 @@ body{
 
     font-weight:  lighter;
     color: #6066D0;
-    background-color: white;
+    background-color: none;
 
     padding: 7px;
 
@@ -224,7 +224,7 @@ body{
 .icon{
     color: #2F527B;
     margin: 0 10px;
-    font-size: 20spx;
+    font-size: 20px;
 }
 
 .enlace{
@@ -234,18 +234,51 @@ body{
 
 .animation-response{
     position: absolute;
+    box-sizing: border-box;
     width: 0;
     height: 100%;
+    margin: 0;
 
     top: 0;
     left: 0;
 
-    background: blueviolet;
+    padding: 7px;
+
     border-radius: 12px;
 
-    transition: width .7s;
+    z-index: -1;
+
+    transition: width 1.2s;
 }
 
 .animation-response.is-animate{
     width: 100%;
+}
+
+
+@media (max-width: 600px){
+    .card{
+        width: 90%
+    }
+
+    .earth{
+        width: 180px;
+        min-height: 180px;
+    }
+
+    .card-score{
+        font-size: 12px;
+    }
+    
+    .score-main{
+        font-size: 25px;
+    }
+
+    .icon{
+        font-size: 16px;
+    }
+
+    .footer{
+        font-size: 10px;
+    }
 }

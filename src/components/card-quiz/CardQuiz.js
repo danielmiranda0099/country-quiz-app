@@ -19,8 +19,7 @@ export const CardQuiz = () => {
         const countries = getRandomContries( data );
         dispatch( cardRandomCountriesAction( countries ) )
         const answer = parseInt( (Math.random() * (3 - 1 + 1)) + 1 );
-        dispatch( cardAnswerAction( answer ) ) 
-        console.log('oli jeje []', countries);
+        dispatch( cardAnswerAction( answer ) );
     }, []);
 
     const handleClickNext = () => {
